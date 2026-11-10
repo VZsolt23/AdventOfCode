@@ -1,0 +1,198 @@
+
+# ==========================================
+# EditorConfig
+# JetBrains Rider oriented C# conventions
+# ==========================================
+
+root = true
+
+# ==========================================
+# Global settings
+# ==========================================
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# ==========================================
+# C# files
+# ==========================================
+
+[*.cs]
+
+# Formatting
+indent_style = space
+indent_size = 4
+tab_width = 4
+end_of_line = lf
+
+# Braces
+csharp_new_line_before_open_brace = all
+
+# Using directives
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_property = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_event = false:warning
+
+# var preferences
+csharp_style_var_for_built_in_types = true:warning
+csharp_style_var_when_type_is_apparent = true:warning
+csharp_style_var_elsewhere = false:warning
+
+# Expression preferences
+csharp_style_expression_bodied_methods = when_on_single_line:warning
+csharp_style_expression_bodied_constructors = when_on_single_line:warning
+csharp_style_expression_bodied_operators = when_on_single_line:warning
+csharp_style_expression_bodied_properties = true:warning
+csharp_style_expression_bodied_indexers = true:warning
+csharp_style_expression_bodied_accessors = true:warning
+csharp_style_expression_bodied_lambdas = true:warning
+csharp_style_expression_bodied_local_functions = when_on_single_line:warning
+
+# Pattern matching
+csharp_style_pattern_matching_over_is_with_cast_check = true:warning
+csharp_style_pattern_matching_over_as_with_null_check = true:warning
+csharp_style_prefer_switch_expression = true:warning
+csharp_style_prefer_pattern_matching = true:warning
+csharp_style_prefer_not_pattern = true:warning
+
+# Null checking
+csharp_style_conditional_delegate_call = true:warning
+dotnet_style_coalesce_expression = true:warning
+dotnet_style_null_propagation = true:warning
+dotnet_style_object_initializer = true:warning
+dotnet_style_collection_initializer = true:warning
+
+# Modern C# features
+csharp_style_implicit_object_creation_when_type_is_apparent = true:warning
+csharp_style_prefer_index_operator = true:warning
+csharp_style_prefer_range_operator = true:warning
+csharp_style_prefer_primary_constructors = false:warning
+
+# Naming conventions
+
+dotnet_naming_rule.interface_prefix.severity = warning
+dotnet_naming_rule.interface_prefix.symbols = interfaces
+dotnet_naming_rule.interface_prefix.style = interface_style
+
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+dotnet_naming_style.interface_style.required_prefix = I
+dotnet_naming_style.interface_style.capitalization = pascal_case
+
+dotnet_naming_rule.types_pascal_case.severity = warning
+dotnet_naming_rule.types_pascal_case.symbols = types
+dotnet_naming_rule.types_pascal_case.style = pascal_case
+
+dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum, delegate
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_rule.methods_pascal_case.severity = warning
+dotnet_naming_rule.methods_pascal_case.symbols = methods
+dotnet_naming_rule.methods_pascal_case.style = pascal_case
+
+dotnet_naming_symbols.methods.applicable_kinds = method
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_rule.properties_pascal_case.severity = warning
+dotnet_naming_rule.properties_pascal_case.symbols = properties
+dotnet_naming_rule.properties_pascal_case.style = pascal_case
+
+dotnet_naming_symbols.properties.applicable_kinds = property
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_rule.fields_camel_case.severity = warning
+dotnet_naming_rule.fields_camel_case.symbols = fields
+dotnet_naming_rule.fields_camel_case.style = camel_case
+
+dotnet_naming_symbols.fields.applicable_kinds = field
+dotnet_naming_style.camel_case.capitalization = camel_case
+
+dotnet_naming_rule.locals_camel_case.severity = warning
+dotnet_naming_rule.locals_camel_case.symbols = locals
+dotnet_naming_rule.locals_camel_case.style = camel_case
+
+dotnet_naming_symbols.locals.applicable_kinds = local
+dotnet_naming_style.camel_case.capitalization = camel_case
+
+dotnet_naming_rule.parameters_camel_case.severity = warning
+dotnet_naming_rule.parameters_camel_case.symbols = parameters
+dotnet_naming_rule.parameters_camel_case.style = camel_case
+
+dotnet_naming_symbols.parameters.applicable_kinds = parameter
+dotnet_naming_style.camel_case.capitalization = camel_case
+
+# Accessibility modifiers
+dotnet_style_require_accessibility_modifiers = always:warning
+
+# New line preferences
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_between_query_expression_clauses = true
+
+# Spacing
+csharp_space_after_cast = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_after_colon_in_inheritance_clause = true
+
+# Usings
+csharp_using_directive_placement = outside_namespace:warning
+
+# Namespace
+csharp_style_namespace_declarations = file_scoped:warning
+
+# ==========================================
+# XML / JSON / YAML
+# ==========================================
+
+[*.{json,jsonc}]
+indent_style = space
+indent_size = 2
+
+[*.{xml,config,props,targets}]
+indent_style = space
+indent_size = 2
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# ==========================================
+# Markdown
+# ==========================================
+
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# ==========================================
+# Solution and project files
+# ==========================================
+
+[*.{csproj,sln,slnx,fsproj,vbproj}]
+indent_style = space
+indent_size = 2
+
+# ==========================================
+# Shell scripts
+# ==========================================
+
+[*.sh]
+end_of_line = lf
+indent_style = space
+indent_size = 4
+
+[*.{bat,cmd,ps1}]
+indent_style = space
+indent_size = 4

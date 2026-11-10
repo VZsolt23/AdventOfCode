@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+
+# Az AoC készítője kéri, hogy a személyes inputokat ne tegyük publikus repóba.
+inputs/

@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AdventOfCode.Cli/AdventOfCode.Cli.csproj" />
+    <Project Path="src/AdventOfCode.Core/AdventOfCode.Core.csproj" />
+    <Project Path="src/AdventOfCode.Solutions/AdventOfCode.Solutions.csproj" />
+  </Folder>
+</Solution>
