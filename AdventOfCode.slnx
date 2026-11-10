@@ -4,4 +4,7 @@
     <Project Path="src/AdventOfCode.Core/AdventOfCode.Core.csproj" />
     <Project Path="src/AdventOfCode.Solutions/AdventOfCode.Solutions.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AdventOfCode.Tests/AdventOfCode.Tests.csproj" />
+  </Folder>
 </Solution>
