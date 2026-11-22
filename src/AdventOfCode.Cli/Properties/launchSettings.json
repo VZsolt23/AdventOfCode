@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Latest": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    },
+    "Latest (example)": {
+      "commandName": "Project",
+      "commandLineArgs": "--example"
+    },
+    "List": {
+      "commandName": "Project",
+      "commandLineArgs": "list"
+    }
+  }
+}
