@@ -8,7 +8,7 @@ public sealed record PartResult(int Part, PartStatus Status, object? Answer, Tim
 
 public sealed record RunResult(SolutionDescriptor Solution, bool UseExample, IReadOnlyList<PartResult> Parts);
 
-/// <summary>Lefuttatja egy megoldás részeit, mér, és hibát/hiányt is eredményként ad vissza.</summary>
+/// <summary>Runs the parts of a solution, times them, and reports failures or missing parts as results instead of throwing.</summary>
 public sealed class SolutionRunner(InputProvider inputs)
 {
     public async Task<RunResult> RunAsync(SolutionDescriptor descriptor, RunOptions options, CancellationToken ct)

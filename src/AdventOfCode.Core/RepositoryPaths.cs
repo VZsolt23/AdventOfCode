@@ -1,10 +1,10 @@
 namespace AdventOfCode.Core;
 
 /// <summary>
-/// Megkeresi a repo gyökerét (Directory.Build.props alapján), így az inputok
-/// helye nem függ attól, honnan indítod az alkalmazást (VS, Rider, dotnet run).
+/// Finds the repository root (by Directory.Build.props), so the input location
+/// does not depend on where the app is started from (VS, Rider, dotnet run).
 /// </summary>
-public static class RepositoryPath
+public static class RepositoryPaths
 {
     private const string RootMarker = "Directory.Build.props";
 

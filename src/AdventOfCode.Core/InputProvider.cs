@@ -1,11 +1,14 @@
 namespace AdventOfCode.Core;
 
 /// <summary>
-/// Inputok betöltése az inputs mappából:
-/// inputs/{év}/dayNN.txt (valódi input) és inputs/{év}/dayNN.example.txt (példa input).
+/// Loads puzzle inputs from the inputs folder:
+/// inputs/{year}/dayNN.txt (real input) and inputs/{year}/dayNN.example.txt (example input).
+/// There is no download: the files must be filled in by hand.
 /// </summary>
-public sealed class InputProvider(string inputRoot)
+public sealed class InputProvider(string inputRoot, TimeProvider? timeProvider = null)
 {
+    private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
+
     public string InputRoot { get; } = inputRoot;
 
     public string GetPath(PuzzleId id, bool example = false) =>
@@ -14,12 +17,17 @@ public sealed class InputProvider(string inputRoot)
     public async Task<PuzzleInput> GetAsync(PuzzleId id, bool example, CancellationToken ct = default)
     {
         var path = GetPath(id, example);
-        if (!File.Exists(path))
-        {
-            var kind = example ? "példa input" : "input";
-            throw new AocException($"Nincs {kind}: {path}\n  Másold be a(z) {id} {kind}át ebbe a fájlba.");
-        }
+        var kind = example ? "example input" : "input";
 
-        return new PuzzleInput(await File.ReadAllTextAsync(path, ct));
+        var raw = File.Exists(path) ? await File.ReadAllTextAsync(path, ct) : null;
+        if (!string.IsNullOrWhiteSpace(raw))
+            return new PuzzleInput(raw);
+
+        if (_time.GetUtcNow() < id.UnlockTime)
+            throw new AocException(
+                $"Puzzle {id} is not unlocked yet (unlocks at {id.UnlockTime.ToLocalTime():yyyy-MM-dd HH:mm}).");
+
+        var problem = raw is null ? $"Missing {kind}" : $"Empty {kind} file";
+        throw new AocException($"{problem}: {path}\n  Paste the {kind} of {id} into this file.");
     }
 }

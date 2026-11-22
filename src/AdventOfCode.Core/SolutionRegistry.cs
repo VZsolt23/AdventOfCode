@@ -3,8 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 namespace AdventOfCode.Core;
 
 /// <summary>
-/// Reflectionnel összegyűjti a [Puzzle] attribútummal jelölt megoldásokat.
-/// A hibás konfigurációt (duplikáció, rossz nap, hiányzó interfész) azonnal jelzi.
+/// Collects solutions marked with the [Puzzle] attribute via reflection.
+/// Invalid configuration (duplicates, invalid day, missing interface) is reported immediately.
 /// </summary>
 public sealed class SolutionRegistry
 {
@@ -25,20 +25,20 @@ public sealed class SolutionRegistry
 
             if (!typeof(ISolution).IsAssignableFrom(type))
                 throw new InvalidOperationException(
-                    $"{type.FullName}: van [Puzzle] attribútuma, de nem implementálja az ISolution interfészt.");
+                    $"{type.FullName}: has a [Puzzle] attribute but does not implement ISolution.");
 
             if (type.IsAbstract || type.GetConstructor(Type.EmptyTypes) is null)
                 throw new InvalidOperationException(
-                    "{type.FullName}: nem absztrakt, paraméter nélküli konstruktorral rendelkező osztály kell.");
+                    $"{type.FullName}: must be a non-abstract class with a parameterless constructor.");
 
             if (!PuzzleId.IsValid(attribute.Year, attribute.Day))
                 throw new InvalidOperationException(
-                    $"{type.FullName}: érvénytelen év/nap: {attribute.Year}/{attribute.Day}.");
+                    $"{type.FullName}: invalid year/day: {attribute.Year}/{attribute.Day}.");
 
             var id = new PuzzleId(attribute.Year, attribute.Day);
             if (solutions.TryGetValue(id, out SolutionDescriptor? existing))
                 throw new InvalidOperationException(
-                    $"Duplikált megoldás ({id}): {existing.Type.FullName} és {type.FullName}.");
+                    $"Duplicate solution ({id}): {existing.Type.FullName} and {type.FullName}.");
 
             solutions.Add(id, new SolutionDescriptor(id, attribute.Title, type));
         }

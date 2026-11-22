@@ -1,7 +1,7 @@
 namespace AdventOfCode.Core;
 
 /// <summary>
-/// A feladvány bemenete egységesített sorvégekkel, a záró üres sorok nélkül.
+/// Puzzle input with normalized line endings and without trailing empty lines.
 /// </summary>
 public sealed class PuzzleInput
 {
@@ -15,13 +15,13 @@ public sealed class PuzzleInput
         _blocks = new(() => Raw.Length == 0 ? [] : Raw.Split("\n\n"));
     }
 
-    /// <summary>A teljes bemenet egy stringként.</summary>
+    /// <summary>The whole input as a single string.</summary>
     public string Raw { get; }
 
-    /// <summary>A bemenet soronként.</summary>
+    /// <summary>The input split into lines.</summary>
     public IReadOnlyList<string> Lines => _lines.Value;
 
-    /// <summary>Üres sorokkal elválasztott blokkok (gyakori AoC-formátum).</summary>
+    /// <summary>Blocks separated by empty lines (a common AoC format).</summary>
     public IReadOnlyList<string> Blocks => _blocks.Value;
 
     public override string ToString() => Raw;

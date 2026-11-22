@@ -1,4 +1,4 @@
 namespace AdventOfCode.Core;
 
-/// <summary>Felhasználónak szóló, várt hiba (hiányzó input, nem létező nap stb.).</summary>
+/// <summary>An expected, user-facing error (missing input, unknown day, etc.).</summary>
 public sealed class AocException(string message) : Exception(message);

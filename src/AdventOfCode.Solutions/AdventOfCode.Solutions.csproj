@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdventOfCode.Core\AdventOfCode.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Lets solution files skip 'using AdventOfCode.Core;' -->
+    <Using Include="AdventOfCode.Core" />
+  </ItemGroup>
+
 </Project>

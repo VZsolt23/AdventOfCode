@@ -4,5 +4,5 @@ obj/
 .idea/
 *.user
 
-# Az AoC készítője kéri, hogy a személyes inputokat ne tegyük publikus repóba.
+# The AoC author asks that personal puzzle inputs are not committed to public repositories.
 inputs/
